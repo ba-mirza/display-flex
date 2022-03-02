@@ -21,3 +21,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: #00184B;
     border: 1px solid #414BBE;
   }
+
+  p, input {
+    font-weight: 400;
+}
+
+
+div, p, input, button, form, span, a, ul, li {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: 900;
+}

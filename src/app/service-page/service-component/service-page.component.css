@@ -4,14 +4,15 @@
 
 h1, h2, h3, h4, h5, h6 {
   color: #00184B;
+  margin: 0;
 }
+
 
 .content {
   margin: 25px auto;
   width: 1260px;
   display: flex; 
   justify-content: space-between;
-  align-items: center;
 }
 
 .cart {
@@ -26,19 +27,14 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 531px;
 }
 
-.card-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 .info {
-  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 .location {
   width: 85px;
-  display: flex;
   justify-content: space-between;
   align-items: center;
 }
@@ -51,6 +47,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn2 {
+  text-align: center;
+  align-items: center;
   text-decoration: none;
   width: 175px;
   padding: 8px 3px;
@@ -60,6 +58,7 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
   background: #414BBE;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .btn2:hover {
@@ -69,8 +68,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rating {
-  display: flex;
-  width: 39px;
+  width: 45px;
   padding: 5px 5px;
   background: #414BBE1F;
   border-radius: 4px;
