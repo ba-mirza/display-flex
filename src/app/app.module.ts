@@ -8,9 +8,11 @@ import {ShairedModule} from "./shaired/shaired.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { RouterModule } from '@angular/router';
 import {HttpClientModule} from "@angular/common/http";
+import { ServicePageComponent } from './service-page/service-component/service-page.component';
 @NgModule({
   declarations: [
     AppComponent,
+    ServicePageComponent
   ],
   imports: [
     BrowserModule,

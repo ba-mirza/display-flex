@@ -34,12 +34,16 @@ export type ReviewType = {
 export class ServicePageComponent implements OnInit {
 
   readonly url = 'http://localhost:4000/api'
-  data: any = [];
+  dataCard: any = [];
+  index: any = this.dataCard.index;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get(`${this.url}/doctors`).subscribe(next => console.log(next));
+    this.http.get(`${this.url}/doctors`).subscribe(next => {
+      this.dataCard = next;
+      // console.log(this.dataCard)
+    });
   }
 
 }
