@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, filter, find, map, of } from 'rxjs';
+import { RequestService } from 'src/app/request.service';
 
 export type DoctorType = {
   fullname: string;
@@ -29,21 +30,60 @@ export type ReviewType = {
 @Component({
   selector: 'app-service-page',
   templateUrl: './service-page.component.html',
-  styleUrls: ['./service-page.component.css']
+  styleUrls: ['./service-page.component.css'],
 })
 export class ServicePageComponent implements OnInit {
 
-  readonly url = 'http://localhost:4000/api'
+  public rating: any;
+  public increase: any;
+  public decrease: any;
+  
+  public dataSelect$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+
   dataCard: any = [];
   index: any = this.dataCard.index;
 
-  constructor(private http: HttpClient) { }
+  constructor(private reqService: RequestService) {}
 
   ngOnInit(): void {
-    this.http.get(`${this.url}/doctors`).subscribe(next => {
-      this.dataCard = next;
-      // console.log(this.dataCard)
+    this.reqService.getUsers().subscribe((data: any) => {
+      this.dataCard = data;
     });
   }
 
+  sortByAZ(value: any) {
+    switch(value) {
+      case "rating":
+        console.log(value)
+        break
+      case "increase":
+        console.log(value)
+        break
+      case "decrease":
+        console.log(value)
+        break
+      default:
+        return value
+    }
+  }
+
+  // onSelect(id: any) {
+  //   const ofData = of(this.dataCard);
+  //   ofData.pipe(
+  //     map((item: any) => {return item}),
+  //     filter(item => item.id !== id)
+  //   ).subscribe((selectItem: any) => {
+  //     console.log(selectItem);
+  //   })
+  // }
+
+  onSelect(id: number) {
+    this.reqService
+      .getUsers()
+      .pipe(find((item: any) => item.id === id))
+      .subscribe((selectItem) => {
+        this.dataSelect$.next(selectItem);
+        console.log(selectItem);
+      });
+  }
 }
