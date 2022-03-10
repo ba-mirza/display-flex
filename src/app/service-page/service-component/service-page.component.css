@@ -33,6 +33,12 @@ body {
   transition: all 0.2s ease-in;
 }
 
+.flex {
+  max-width: 531px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .cart:hover {
   transform: translateY(-2px);
 }
@@ -142,52 +148,3 @@ span {
   border-radius: 24px;
 }
 
-.cart-display {
-  display: flex;
-  justify-content: center;
-  padding-top: 30px;
-}
-
-.flex {
-  max-width: 531px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.cart-d {
-  display: flex;
-  width: 330px;
-  padding: 10px;
-  box-shadow: 0px 30px 60px rgba(138, 149, 158, 0.12);
-  border-radius: 10px;
-  margin-bottom: 35px;
-  transition: all 0.2s ease-in;
-}
-
-
-.show-details {
-  margin: 0;
-  padding: 20px 25px;
-}
-
-.font-info {
-  font-weight: normal;
-  font-size: 12px;
-  color: #9298A9;
-}
-
-.qualifications {
-  margin-top: 50px;
-}
-
-.services {
-  margin-top: 50px;
-}
-
-.reviews {
-  margin-top: 50px;
-}
-
-.fees {
-  margin-top: 10px;
-}

@@ -11,11 +11,13 @@ import {HttpClientModule} from "@angular/common/http";
 import { ServicePageComponent } from './service-page/service-component/service-page.component';
 
 import {MatSelectModule} from '@angular/material/select';
+import { DisplayShowComponentComponent } from './service-page/display-show-component/display-show-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ServicePageComponent
+    ServicePageComponent,
+    DisplayShowComponentComponent
   ],
   imports: [
     BrowserModule,

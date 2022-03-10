@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, filter, find, map, of } from 'rxjs';
 import { RequestService } from 'src/app/request.service';
 
@@ -42,6 +43,7 @@ export class ServicePageComponent implements OnInit {
 
   dataCard: any = [];
   index: any = this.dataCard.index;
+  cardDetails: any = [];
 
   constructor(private reqService: RequestService) {}
 
@@ -49,6 +51,7 @@ export class ServicePageComponent implements OnInit {
     this.reqService.getUsers().subscribe((data: any) => {
       this.dataCard = data;
     });
+
   }
 
   sortByAZ(value: any) {
@@ -67,23 +70,17 @@ export class ServicePageComponent implements OnInit {
     }
   }
 
-  // onSelect(id: any) {
-  //   const ofData = of(this.dataCard);
-  //   ofData.pipe(
-  //     map((item: any) => {return item}),
-  //     filter(item => item.id !== id)
-  //   ).subscribe((selectItem: any) => {
-  //     console.log(selectItem);
-  //   })
-  // }
-
   onSelect(id: number) {
-    this.reqService
-      .getUsers()
-      .pipe(find((item: any) => item.id === id))
-      .subscribe((selectItem) => {
-        this.dataSelect$.next(selectItem);
-        console.log(selectItem);
-      });
+    this.reqService.getUsers().pipe(
+      map((item) => {
+        let ids: any = [];
+        item.map((el: any) => {
+          if(el.id === id) {
+            ids.push(el)
+          }
+        })
+        return ids;
+      }),
+    ).subscribe(data => this.cardDetails = data);
   }
 }
