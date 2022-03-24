@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,13 +7,22 @@ import {MainPageModule} from "./main-page/main-page.module";
 import {ShairedModule} from "./shaired/shaired.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { RouterModule } from '@angular/router';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { ServicePageComponent } from './service-page/service-component/service-page.component';
 
 import {MatSelectModule} from '@angular/material/select';
+
 import { DisplayShowComponentComponent } from './service-page/display-show-component/display-show-component.component';
 import { ClinicsComponent } from './clinics/clinics.component';
 import { ClinicDisplayComponent } from './clinics/clinic-display/clinic-display.component';
+
+import { AuthInterceptor } from './AuthInterceptor';
+
+const INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor
+}
 
 @NgModule({
   declarations: [
@@ -31,9 +40,9 @@ import { ClinicDisplayComponent } from './clinics/clinic-display/clinic-display.
     BrowserAnimationsModule,
     RouterModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
   ],
-  providers: [],
+  providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
